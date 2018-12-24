@@ -1,3 +1,6 @@
 [submodule "webgl-sandbox"]
 	path = webgl-sandbox
 	url = https://github.com/random634/webgl-sandbox.git
+[submodule "romantic_page"]
+	path = romantic_page
+	url = git@github.com:random634/romantic_page.git
