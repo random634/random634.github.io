@@ -1,27 +1,57 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="./style/home.css" type="text/css">
-  </head>
 
-  <body>
-    <h3>Demos</h3>
-	  <div class='style1'>
-      <h5>WebGL-SandBox</h5>
-      <a href='/webgl-sandbox/sandbox/dist/'>example1</a>
-    </div>
-  </body>
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style/buttons.css" type="text/css">
+</head>
 
-  <script>
-    main();
+<body>
+  <div id="nav", style="text-align: center">
+  </div>
+</body>
 
-    //
-    // start here
-    //
-    function main() {
-        console.log('hello github.io!!!')
+<script>
+  //
+  // start here
+  //
+  var BtnTypeCommon = "button button-giant button-rounded";
+  var BtnTypeColors = ["button-primary", "button-inverse", "button-action", "button-highlight", "button-caution", "button-royal"];
+
+  Main();
+
+  function Main () {
+    var btnMap = {
+      "webgl-sandbox": "webgl-sandbox/sandbox/dist/",
+      "todo-1": "/",
+      "todo-2": "/",
+      "todo-3": "/",
+      "todo-4": "/"
+    };
+
+    var now = new Date();
+    if (now.toDateString().indexOf('Dec 24') !== -1) {
+      btnMap = {
+        "romantic-page": "romantic_page/",
+      }
     }
-  </script>
+
+    var navNode = document.getElementById("nav");
+    for (var displayName in btnMap) {
+      CreateBtn(navNode, displayName, btnMap[displayName]);
+    }
+
+    var keys = Object.keys(btnMap);
+    if (keys.length === 1) {
+      window.location = btnMap[keys[0]];
+    }
+  }
+
+  function CreateBtn (rootNode, displayName, url) {
+    let btnNode = `<div style="padding: 10px 10px 10px 10px"><a href="${url}" class="${BtnTypeCommon + ' ' + BtnTypeColors[Math.floor(Math.random() * BtnTypeColors.length)]}">${displayName}</a></div>\n`;
+    rootNode.innerHTML += btnNode;
+  }
+</script>
+
 </html>
